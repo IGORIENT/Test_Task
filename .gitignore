@@ -11,6 +11,15 @@
 .vs/
 
 
+# Игнорировать PDF, IFC, Excel, SVG
+*.pdf
+*.ifc
+*.xls
+*.xlsx
+*.svg
+
+
+
 # Build results
 [Dd]ebug/
 [Dd]ebugPublic/
