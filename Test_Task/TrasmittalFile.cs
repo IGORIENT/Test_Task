@@ -19,7 +19,5 @@ namespace Test_Task
             Name = name;
             Ext = ext;
         }
-
-        public override string ToString() => $"{Dir}/{Name}.{Ext}";
     }
 }

@@ -34,7 +34,7 @@ namespace Test_Task
             for (int r = firstRow + 1; r <= lastRow; r++)
             {
                 var name = workSheets.Cell(r, numberOfNameCol).GetString();
-                var dir = workSheets.Cell(r, numberOfPathCol).GetString();
+                var dir = workSheets.Cell(r, numberOfPathCol).GetString()["Project\\".Length..]; 
                 var ext = workSheets.Cell(r, numberOfExtCol).GetString();
 
                 // пропускаем не полные строки

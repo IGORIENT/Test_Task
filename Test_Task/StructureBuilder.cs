@@ -18,23 +18,22 @@ namespace Test_Task
         {
             foreach (var rec in records)
             {
-                var Ext = (rec.Ext).Trim();
-                if (!Ext.StartsWith("."))
-                    Ext = "." + Ext;
+                // расширение с точкой в начале
+                var Ext = rec.Ext.StartsWith(".") ? rec.Ext : "." + rec.Ext;
 
-                // имя файла
+                // имя файла + расширение
                 var Name =rec.Name + Ext;
-                
 
-                // папка
-                var relDir = rec.Dir.Trim().Replace('\\', '/').Trim('/');
-                var absDir = Path.Combine(_projectDir, relDir.Replace('/', Path.DirectorySeparatorChar));
+                // абсолютный путь к папке
+                var absDir = Path.Combine(_projectDir, rec.Dir.Replace('\\', Path.DirectorySeparatorChar).Trim(Path.DirectorySeparatorChar));
 
+                // полный путь к файлу
                 var absFile = Path.Combine(absDir, Name);
 
-                Directory.CreateDirectory(absDir);
+                Directory.CreateDirectory(absDir); //создаю дирректорию
+                
                 if (!File.Exists(absFile))
-                    File.WriteAllBytes(absFile, Array.Empty<byte>());
+                    File.WriteAllBytes(absFile, Array.Empty<byte>()); //создаю пустой файл-заглушку
             }
         }
     }
